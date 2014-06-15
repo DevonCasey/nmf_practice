@@ -1,5 +1,3 @@
-Main teacher: Jonathan
-
 ## Overview -- Unsupervised learning: Finding important features (NMF)
 
 This sprint will use Non-Negative Matrix factorization (NMF) to discover topics from our NYT corpus.  Similar to kmeans and hierarchical clustering, NMF is a technique to help discover latent properties (features) in our data that a human might not have been able to see otherwise. 
@@ -10,6 +8,7 @@ This sprint will use Non-Negative Matrix factorization (NMF) to discover topics 
 * Dimensionality reduction
 * Latent properties
 * Linear combination of features
+* LDA
 
 ## Assignment: 
 
@@ -209,3 +208,8 @@ Wi+1 = Wi *  --------------------
 ===========================================================
 
 
+
+##Extra Credit
+==========================================================
+
+1. [Word2Vec](http://radimrehurek.com/gensim/models/word2vec.html) is a way of doing topic modeling on individual words where its usage is encoded as a single vector. This can then be used in all sorts of classifiers to do sequential text classification using moving window. 
