@@ -32,7 +32,7 @@ One issue that comes up with latent factor models is determining how many latent
 
 3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature.
 
-4. Make a word cloud for each latent topic of the words contained in it.  You can use an online service or [Vega](https://github.com/trifacta/vega/blob/master/examples/spec/wordcloud.json) -- an awesome D3 library -- and it's Python library [Vincent](http://vincent.readthedocs.org/en/latest/index.html) (with sweet IPython [bindings](http://vincent.readthedocs.org/en/latest/quickstart.html#ipython-integration)).   __Hint: Look for the `Word` method in Vincent__
+4. Make a bar plot of the words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
 5. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
@@ -41,6 +41,10 @@ One issue that comes up with latent factor models is determining how many latent
 7. Compare these results to what your kmeans and Hierarchical clustering pulled out from the data yesterday.
 
 8. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
+
+#### Extra
+
+Make a word cloud for each latent topic of the words contained in it.  You can use an online service or [Vega](https://github.com/trifacta/vega/blob/master/examples/spec/wordcloud.json) -- an awesome D3 library -- and it's Python library [Vincent](http://vincent.readthedocs.org/en/latest/index.html) (with sweet IPython [bindings](http://vincent.readthedocs.org/en/latest/quickstart.html#ipython-integration)).   __Hint: Look for the `Word` method in Vincent__
 
 
 
