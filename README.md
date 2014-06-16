@@ -165,7 +165,39 @@ To build a collaborative filter, simply use this new reduced **M** matrix as you
 
 Try to perform the above analysis with increasingly larger datasets (MovieLens 1M and MovieLens 10M)
 
-## Extra Credit (Implement NMF using Alternating Least Squares)
+
+##LDA and comparison of other techniques
+===========================================================
+
+[LDA - Latent Dirchlet Association](http://radimrehurek.com/gensim/models/ldamodel.html) is the process of identifying latent topics in your data. LDA allows you to specify the number of topics. The intuition here is that you want to fit an ideal distribution over your sets of words, documents, and topics such that, you identify the likelihood of a word in a given word or topic.
+
+Using LDA, specify a number of topics equal to the new york times articles sections. 
+
+Run through and inspect the clusters. Histogram word counts of the different topics.
+
+
+##Comparisons
+============================================================
+
+Now that we have seen LDA, let's run a side by side experiment. Leveraging our LDA results again (as well as the word counts) run through and use:
+
+1. [kmeans](http://scikit-learn.org/stable/auto_examples/applications/topics_extraction_with_nmf.html#example-applications-topics-extraction-with-nmf-py)
+2. LDA (already done)
+3. [NMF](http://scikit-learn.org/stable/auto_examples/document_clustering.html#example-document-clustering-py)
+
+Again: histogram word counts and see how each one breaks down per topic. Calculate the number of topics/clusters that are hidden in the word counts and see which method is most effective.
+
+
+
+
+
+
+##Extra Credit
+==========================================================
+
+1. [Word2Vec](http://radimrehurek.com/gensim/models/word2vec.html) is a way of doing topic modeling on individual words where its usage is encoded as a single vector. This can then be used in all sorts of classifiers to do sequential text classification using moving window. 
+
+2. ## Extra Credit (Implement NMF using Alternating Least Squares)
 
 ### Overview
 
@@ -203,13 +235,3 @@ Wi+1 = Wi *  --------------------
 
 8. Return the computed weights and features matrix.
 
-
-##LDA
-===========================================================
-
-
-
-##Extra Credit
-==========================================================
-
-1. [Word2Vec](http://radimrehurek.com/gensim/models/word2vec.html) is a way of doing topic modeling on individual words where its usage is encoded as a single vector. This can then be used in all sorts of classifiers to do sequential text classification using moving window. 
