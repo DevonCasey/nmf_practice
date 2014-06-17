@@ -87,7 +87,7 @@ Using LDA, specify a number of topics equal to the new york times articles secti
 Run through and inspect the clusters. Histogram word counts of the different topics.
 
 
-##Comparisons
+Comparisons
 ============================================================
 
 Now that we have seen LDA, let's run a side by side experiment. Leveraging our LDA results again (as well as the word counts) run through and use:
@@ -111,7 +111,7 @@ Again: histogram word counts and see how each one breaks down per topic. Calcula
 
 1. [Word2Vec](http://radimrehurek.com/gensim/models/word2vec.html) is a way of doing topic modeling on individual words where its usage is encoded as a single vector. This can then be used in all sorts of classifiers to do sequential text classification using moving window. 
 
-2. ## Extra Credit (Implement NMF using Alternating Least Squares)
+2. Extra Credit (Implement NMF using Alternating Least Squares)
 
 ### Overview
 
