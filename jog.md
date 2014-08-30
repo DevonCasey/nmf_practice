@@ -51,7 +51,7 @@ Make a word cloud for each latent topic of the words contained in it.  You can u
 ##LDA and comparison of other techniques
 ===========================================================
 
-##Gensim
+## Use GraphLab
 
 Gensim unfortunately isn't sklearn friendly. Take your corpus again and run it through the mmcorpus. (Below other corpora are listed for posterity). Use this in your model for LDA.
            
