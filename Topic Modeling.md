@@ -2,25 +2,6 @@
 Topic Modeling Overview
 ==============================================
 
-Relation to Dimensionality Reduction
-================================================
-
-Topic Modeling uses dimensionality reduction techniques to model and group the
-data in meaningful ways (by word occurrences)
-
-In this lecture, we will be treating these dimensionality reduction techniques
-as roughly the same.
-
-
-Why are we doing this?
-
-If we remember PCA/SVD from yesterday, these 2 things are both dimensionality
-reduction techniques.
-
-SVD's D (right single matrix) is equivalent to principal components scaled by
-zero mean and unit variance.
-
-
 
 Motivating Example
 =============================================
@@ -74,82 +55,39 @@ bag of words vectors to automatically cluster documents in to topics.
 
 
 
+LDA
+=====================================
 
-NMF (Non Negative Matrix Factorization
-=============================================
+LDA is a generative model over a set of documents.
 
-
-Tiein with SVD. Very similar to SVD where you have a left matrix U (representing
-row values) and a right matrix V (representing column values), NMF is another
-form of decomposition for non negative matrices. The basic idea with SVD and
-doing a reconstruction was the following:
-
-To approximate the data you did:
-
-u[1,k] * diag(d[1,k] * v[1,k]T
-
-to do a reconstruction.
-
-NMF also has a similar concept of reconstructions.
+Documents are represented as a mixture over latent topics
+wherein each topic is categorized over a distinct set of words (remember your
+vocab?)
 
 
-Conceptual Overview
-==============================================
+We can represent this probability distribution as follows:
+
+![alt text](images/lda-probability.png "LDA Probability")
 
 
-[NMF](http://en.wikipedia.org/wiki/Non-negative_matrix_factorization) is a form
-of matrix decomposition (think SVD) that takes an  m x n matrix (of all numbers
-being >= 0) and decomposes it down to  2 matrices W and H of dimensions m x r
-and r x n respectively where r is <= min(m,n). . NMF generates factors with
-significantly reduced dimensions compared to the original matrix.
+Let theta represent the topic mixture over a set of documents over a set of N
+topics z,
+and a set of N words w.
 
 
+If we remember the simplex from earlier, think of LDA as a way of placing points
+on that triangle. The "allocation" part of the algorithm places the words in a 3
+nested bin.
 
 
-The property then holds that:
+This can be represented with a simplex. Given a 3 edge simple with points A,B,
+and C, let's demonstrate with a basically Dirchlet tries to find.
 
-W * H = V
+The basic idea is we have a triangle with 3 points, and we want to try to model
+where the document falls over a set of topics given its words.
 
-W are the principal components row wise. H are principal components column wise.
+![alt text](images/density-unigrams.png "LDA Probability")
 
-
-A quick example
-
-W =
-
-   0.91860   0.73835
-   0.26502   0.65643
-   0.93525   0.96078
-   0.48499   0.10956
-
-H =
-
-   0.780323   0.048058   0.460162   0.956932   0.935853   0.807745
-
-   0.531417   0.494166   0.627717   0.940814   0.685886   0.301090
-
-V = W * H =
-
-   0.248891   0.050057   0.170430   0.326982   0.302153   0.238898
-
-   0.401785   0.039895   0.247256   0.502213   0.483461   0.407730
-
-   0.935341   0.294726   0.713106   1.295608   1.146717   0.840256
-
-   0.794035   0.500370   0.775793   1.256624   0.999800   0.578318
-
-
-
-We fine these decompositions via numerically solving for them via loss functions
-(think SGD).
-
-Some successful algorithms are based on alternating non-negative least squares:
-in each step of such an algorithm, first H is fixed and W found by a non-
-negative least squares solver, then W is fixed and H is found analogously. The
-procedures used to solve for W and H may be the same[16] or different, as some
-NMF variants regularize one of W and H.[14] Specific approaches include the
-projected gradient descent methods,[16][17] the active set method,[3][18] and
-the block principal pivoting method[19] among several others.
 
 
 
@@ -212,41 +150,6 @@ the block principal pivoting method[19] among several others.
     topic 2: cuts/0.02 homers/0.02 continually/0.01 agnostic/0.01 kawasaki/0.01 hangs/0.01 differing/0.01 frequent/0.01 ke/0.01 csd4/0.01
     topic 3: discourse/0.10 military/0.09 mag/0.09 delta/0.08 demos/0.07 157/0.07 alarm/0.07 credibility/0.06 chassis/0.05 canadians/0.04
     topic 4: mock/0.01 hull/0.00 fw/0.00 institute/0.00 qy/0.00 dont/0.00 9mm/0.00 fallacy/0.00 alleged/0.00 davet/0.00
-
-
-LDA
-=====================================
-
-LDA is a generative model over a set of documents.
-
-Documents are represented as a mixture over latent topics
-wherein each topic is categorized over a distinct set of words (remember your
-vocab?)
-
-
-We can represent this probability distribution as follows:
-
-![alt text](images/lda-probability.png "LDA Probability")
-
-
-Let theta represent the topic mixture over a set of documents over a set of N
-topics z,
-and a set of N words w.
-
-
-If we remember the simplex from earlier, think of LDA as a way of placing points
-on that triangle. The "allocation" part of the algorithm places the words in a 3
-nested bin.
-
-
-This can be represented with a simplex. Given a 3 edge simple with points A,B,
-and C, let's demonstrate with a basically Dirchlet tries to find.
-
-The basic idea is we have a triangle with 3 points, and we want to try to model
-where the document falls over a set of topics given its words.
-
-![alt text](images/density-unigrams.png "LDA Probability")
-
 
 
 
