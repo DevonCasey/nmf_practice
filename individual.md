@@ -1,5 +1,3 @@
-2. Extra Credit (Implement NMF using Alternating Least Squares)
-
 ### Overview
 
 0. Randomly initialize weights and features matrix
@@ -9,29 +7,33 @@
 
 ### Implementation
 
-1. With the document matrix (our bags of words), we can begin implementing the NMF algorithm.  First we need to initialize our weights (__W__) and features (__H__) matrices.  Initialize the weights matrix (W) with random values to be a __n x r__ matrix, where __n__ is the number of documents and __r__ is the number of latent features.  __r__ is a user defined parameter.
+With the document matrix (our bags of words), we can begin implementing the NMF algorithm.  
 
-3.  Initialize the feature matrix (H) to be __r x m__ where __m__ is the number of words in our vocabulary (i.e. length of bag).  Our original document matrix (__V__) is a __n x m__ matrix.  __NOTICE: shape(V) = shape(W * H)__
+1. Create a NMF class to that is initialized with a document matrix (bag of words or tf-idf) __R__.  As arguments (in addition to the document matrix) it should also take parameters __k__ (# of latent topics) and the maximum # of iterations to perform. 
+  
+  First we need to initialize our weights (__W__) and features (__H__) matrices.  
 
-4. Now that we have initialized our matrices, we can begin iterating.  For each update step we need to define our cost function.  We will be using the sum of squared Euclidean distances.  Define a new function (__def cost():__) to compute the sum of the squared Euclidean distances between each point in our two matrices.
+1. Initialize the weights matrix (W) with (positive) random values to be a __n x k__ matrix, where __n__ is the number of documents and __k__ is the number of latent topics.
 
-![eucl](http://upload.wikimedia.org/math/8/2/0/8206c782235517a0636ff7aa521ed2d7.png)
+2.  Initialize the feature matrix (H) to be __k x m__ where __m__ is the number of words in our vocabulary (i.e. length of bag).  Our original document matrix (__R__) is a __n x m__ matrix.  __NOTICE: shape(R) = shape(W * H)__
 
-5. Break our of our iteration if we happen to achieve convergence (i.e. __cost(V, W*H)__ == 0).
+3. To make any imporvements we need a concept of error. Define a new function to compute the sum of the squared Euclidean distances between each point in our __R_hat__ matrix (__W__ x __H__) and the original document matrix (__R__).
 
-6. Now we update our weights and features matrices.  Update our feature matrix according to the following formula:
+  ![eucl](http://upload.wikimedia.org/math/8/2/0/8206c782235517a0636ff7aa521ed2d7.png)
+
+4. Now that we have initialized our matrices and defined our cost, we can begin iterating. Update your weights and features matrices accordingly.  Update our feature matrix according to the following formula at each step __I__:
 
 ```
-  	          transpose(W) * V
-Hi+1 = Hi *  --------------------
-              transpose(W) * W * H
+  	                  W.T * R
+H_i+1 = H_i *  --------------------
+                    W.T * W * H
 
 
-  	          V * transpose(Hi+1)
-Wi+1 = Wi *  --------------------
-              W * Hi+1 * transpose(Hi+1)
+  	                R * H_i+1.T
+W_i+1 = W_i *  --------------------
+                W * H_i+1 * H_i+1.T
 ```
 
-7. Repeat this update until convergence (step #5) or until our max # of iterations.
+7. Repeat this update until convergence (i.e. __cost(R, W*H)__ == 0). or until our max # of iterations.
 
-8. Return the computed weights and features matrix.
+8. Return the computed weights matrix and features matrix.
