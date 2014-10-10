@@ -28,14 +28,16 @@ mm = corpora.MmCorpus('questions.mm')
 
 [LDA - Latent Dirchlet Association](http://radimrehurek.com/gensim/models/ldamodel.html) is the process of identifying latent topics in your data. LDA allows you to specify the number of topics. The intuition here is that you want to fit an ideal distribution over your sets of words, documents, and topics such that, you identify the likelihood of a word in a given word or topic.
 
-1. Using LDA, specify a number of topics equal to the new york times articles sections. 
-2. Run through and inspect the returned topics. Histogram word counts of the different topics.
-
+1. Before we can do our LDA, we need to get both our vocabulary and our TF-IDF feature matrix.  Use scikit-learn's TF-IDF on the NYT.  Extract the vocab from the TF-IDF (the list of words is your corpus).
+2. Before we can run our model we need to convert our scipy sparse matrix (what tf-idf returns) to the data form (a stream) that gensim expects. You can do this with the [Sparse2Corpus](http://radimrehurek.com/gensim/matutils.html) method.
+3. And the last piece before we run our model is to convert our vocab we got from scikit-learn into a dictionary.  Convert your list of words for your vocab.  The key is the index from wocab and the value is the word itself: `{ '0': 'ace', '1': 'apple', '2': 'bus', ... }`
+1. Now we are ready to put all the pieces together!  Using [LDA](http://radimrehurek.com/gensim/tut2.html#available-transformations), specify a number of topics equal to the new york times articles sections.   
+2. Run through and inspect the returned [topics](http://radimrehurek.com/gensim/wiki.html#latent-dirichlet-allocation). Histogram word counts of the different topics.
 
 Comparisons
 ============================================================
 
-Now that we have seen LDA, let's run a side by side experiment. Leveraging our LDA results again (as well as the word counts) run through and use:
+Now that we have seen LDA, let's run a side by side experiment. Leveraging our LDA results again (as well as the word counts) run through the following on the `20newsgroups` in scikit-learn and use:
 
 1. [kmeans](http://scikit-learn.org/stable/auto_examples/applications/topics_extraction_with_nmf.html#example-applications-topics-extraction-with-nmf-py)
 2. LDA (already done)
