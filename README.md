@@ -3,4 +3,6 @@ topicmodeling
 
 NMF and Topic Modeling using gensim
 
-exercise in [jog.md](jog.md)
+Morning exercise in [individual.md](individual.md).
+
+Afternoon (pairing) exercise in [pair.md](pair.md)
