@@ -1,35 +1,12 @@
 ## LDA and comparison of other techniques
 ===========================================================
 
-To apply LDA we will be using a new library called [Gensim](http://radimrehurek.com/gensim/) which has a very robust implementation of LDA as well as many other great modules for working with text. Gensim unfortunately isn't sklearn friendly. Take your corpus again and run it through the mmcorpus. (Below other corpora are listed for posterity). Use this in your model for LDA.
-           
-```python
-import gensim
-from gensim import corpora, similarities, models
-
-##Text Preprocessing is done here using nltk
-          
-##Saving of the dictionary and corpus is done here
-##final_text contains the tokens of all the documents
-          
-dictionary = corpora.Dictionary(final_text)
-dictionary.save('questions.dict');
-
-corpus = [dictionary.doc2bow(text) for text in final_text]
-corpora.MmCorpus.serialize('questions.mm', corpus)
-corpora.SvmLightCorpus.serialize('questions.svmlight', corpus)
-corpora.BleiCorpus.serialize('questions.lda-c', corpus)
-corpora.LowCorpus.serialize('questions.low', corpus)
-          
-##Then the dictionary and corpus can be used to train using LDA
-          
-mm = corpora.MmCorpus('questions.mm')
-```
+To apply LDA we will be using a new library called [Gensim](http://radimrehurek.com/gensim/) which has a very robust implementation of LDA as well as many other great modules for working with text. 
 
 [LDA - Latent Dirchlet Association](http://radimrehurek.com/gensim/models/ldamodel.html) is the process of identifying latent topics in your data. LDA allows you to specify the number of topics. The intuition here is that you want to fit an ideal distribution over your sets of words, documents, and topics such that, you identify the likelihood of a word in a given word or topic.
 
 1. Before we can do our LDA, we need to get both our vocabulary and our TF-IDF feature matrix.  Use scikit-learn's TF-IDF on the NYT.  Extract the vocab from the TF-IDF (the list of words is your corpus).
-2. Before we can run our model we need to convert our scipy sparse matrix (what tf-idf returns) to the data form (a stream) that gensim expects. You can do this with the [Sparse2Corpus](http://radimrehurek.com/gensim/matutils.html) method.
+2. Before we can run our model we need to [convert](http://stackoverflow.com/questions/21552518/using-scikit-learn-vectorizers-and-vocabularies-with-gensim) our scipy sparse matrix (what tf-idf returns) to the data form (a stream) that gensim expects. You can do this with the [Sparse2Corpus](http://radimrehurek.com/gensim/matutils.html) method.
 3. And the last piece before we run our model is to convert our vocab we got from scikit-learn into a dictionary.  Convert your list of words for your vocab.  The key is the index from wocab and the value is the word itself: `{ '0': 'ace', '1': 'apple', '2': 'bus', ... }`
 1. Now we are ready to put all the pieces together!  Using [LDA](http://radimrehurek.com/gensim/tut2.html#available-transformations), specify a number of topics equal to the new york times articles sections.   
 2. Run through and inspect the returned [topics](http://radimrehurek.com/gensim/wiki.html#latent-dirichlet-allocation). Histogram word counts of the different topics.
