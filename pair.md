@@ -1,11 +1,5 @@
-
-
-
-
-##LDA and comparison of other techniques
+## LDA and comparison of other techniques
 ===========================================================
-
-## Use GraphLab
 
 Gensim unfortunately isn't sklearn friendly. Take your corpus again and run it through the mmcorpus. (Below other corpora are listed for posterity). Use this in your model for LDA.
            
@@ -80,9 +74,6 @@ For today's sprint, we will be applying what we have learned yesterday to custom
 __Ex: yelp_search("hipster noodles") or yelp_search("late night taco binge")__
 
 
-
-##Extra Credit
-==========================================================
 
 1. [Word2Vec](http://radimrehurek.com/gensim/models/word2vec.html) is a way of doing topic modeling on individual words where its usage is encoded as a single vector. This can then be used in all sorts of classifiers to do sequential text classification using moving window. 
 
