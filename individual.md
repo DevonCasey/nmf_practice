@@ -1,15 +1,3 @@
-## Overview -- Unsupervised learning: Finding important features (NMF)
-
-This sprint will use Non-Negative Matrix factorization (NMF) to discover topics from our NYT corpus.  Similar to kmeans and hierarchical clustering, NMF is a technique to help discover latent properties (features) in our data that a human might not have been able to see otherwise. 
-
-## Goals
-
-* Matrix factorization
-* Dimensionality reduction
-* Latent properties
-* Linear combination of features
-* LDA
-
 ## Assignment: 
 
 For this assignment, we will apply the NMF algorithm to our corpus of NYT articles to discover latent topics.  The NYT sections are great, but they are somewhat arbitrarily defined.  Let us see what insights we can mine out of our corpus!  Once we have gotten a feel for latent properties of our data (topics of articles in this case), we will revisit our recommender and apply a SVD matrix factorization to it.
