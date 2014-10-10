@@ -105,6 +105,7 @@ where the document falls over a set of topics given its words.
     
     X = vec.fit_transform(newsgroups_train.data)
     vocab = vec.get_feature_names()
+    y = newsgroups_train.target
     
     def fit_classifier(X, y, C=0.1):
         """ Fit L1 Logistic Regression classifier. """
