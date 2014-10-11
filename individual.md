@@ -22,6 +22,8 @@ One issue that comes up with latent factor models is determining how many latent
 
 4. Make a bar plot of the words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
+6. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
+
 5. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
 6.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features?  Do these make sense given the article?
