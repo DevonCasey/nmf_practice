@@ -92,7 +92,7 @@ where the document falls over a set of topics given its words.
 
 
 
-
+```python
     from gensim.models.ldamodel import LdaModel
     from gensim import corpora
     from gensim import matutils
@@ -151,7 +151,7 @@ where the document falls over a set of topics given its words.
     topic 2: cuts/0.02 homers/0.02 continually/0.01 agnostic/0.01 kawasaki/0.01 hangs/0.01 differing/0.01 frequent/0.01 ke/0.01 csd4/0.01
     topic 3: discourse/0.10 military/0.09 mag/0.09 delta/0.08 demos/0.07 157/0.07 alarm/0.07 credibility/0.06 chassis/0.05 canadians/0.04
     topic 4: mock/0.01 hull/0.00 fw/0.00 institute/0.00 qy/0.00 dont/0.00 9mm/0.00 fallacy/0.00 alleged/0.00 davet/0.00
-
+```
 
 
 
