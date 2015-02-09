@@ -79,7 +79,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 
 #### Designing an API
 
-For extra credit try running your NMF on the NYT data from yesterday.  In addition try implementing a user friendly API for your class.  These functions should only return results after you have performed your matrix decomposition.
+For extra credit try running your NMF on the book review data from yesterday.  In addition try implementing a user friendly API for your class.  These functions should only return results after you have performed your matrix decomposition.
 
 1. Define a function that displays the top ten words for each of your __k__ topics (and the associated weights).
 2. Define a function that displays the headlines/titles of the top 10 documents for each topic.
