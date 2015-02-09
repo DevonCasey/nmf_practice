@@ -20,7 +20,7 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 6.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features?  Do these make sense given the article?
 
-7. Compare these results to what your kmeans and Hierarchical clustering pulled out from the data yesterday.
+7. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
 
 8. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
 
