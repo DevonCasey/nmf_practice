@@ -4,14 +4,6 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 ### The Latent Factor Model
 
-#### Model Overview
-
-The central dogma in constructing a recommendation system using collaborative filtering is that *similar users will rate similar { products | restaurants | movies } similarly*. In our previous sprint, we explicitly encoded this idea by using a similarity function to identify similar products. In this sprint, we will use a model that allows us to identify both similar users and similar { products | restaurants | movies } as a function of **latent factors**.
-
-We can think of latent factors as properties of movies (e.g., actors and actresses, genre, comedic style, etc.) that users have a positive or negative preference for. We do not observe these factors or the users' preferences directly, but we assume that they affect how users tend to rate movies. Note that if users have similar preferences, then according to the model, they will behave similarly, and likewise, if movies have similar latent factors, they will be rated similarly by similar users. Latent factors thus give us an intuitive way to specify a generative model the obeys the central dogma.
-
-One issue that comes up with latent factor models is determining how many latent factors to include. There may be a number of different unmeasured properties that affect ratings in different ways. We deal with the problem of choosing the number of latent factors to include in the same way we deal with choosing __alpha__ in a Naive Bayes problem (or setting any hyperparameters).
-
 ### NYT Articles
 
 1. We will be starting with our bag of words matrix.  You may use the [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) from scikit-learn (or Tfidf).  You have computed bag of words enough times to know it forwards and backwards.  Use the same 1405 articles we have been using all along now.
