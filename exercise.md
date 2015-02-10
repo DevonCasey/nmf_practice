@@ -54,10 +54,10 @@ plot_url = py.plot(fig, filename='nyt_word_distributions', auto_open=False)
 py.iplot(fig, filename='grouped-bar')
 ```
 
-    <div>
-        <a href="https://plot.ly/~rickyk9487/2/" target="_blank" title="Word Distributions for Topics of the NYT" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/2.png" alt="Word Distributions for Topics of the NYT" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-        <script data-plotly="rickyk9487:2" src="https://plot.ly/embed.js" async></script>
-    </div>
+<div>
+    <a href="https://plot.ly/~rickyk9487/2/" target="_blank" title="Word Distributions for Topics of the NYT" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/2.png" alt="Word Distributions for Topics of the NYT" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="rickyk9487:2" src="https://plot.ly/embed.js" async></script>
+</div>
 
 1. To really understand the concept of topic space, try choosing a few topics.  For a small subset of the documents plot it in "topic space" by creating a scatterplot.  X, Y, Z will represent a row of the W weights matrix. Below fill your code so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Set `W2` to be the `fit_transform` of this subset of the content.
     
