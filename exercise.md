@@ -41,7 +41,7 @@ Then in a python environment
     
     import vincent
     vincent.core.initialize_notebook()
-    for i in xraneg(n_topics):
+    for i in xrange(n_topics):
         word_cloud = vincent.Word(topic_dicts[i])
         ''' Your code here'''
         word_cloud.display()
