@@ -36,7 +36,7 @@ Make a word cloud for each latent topic of the words contained in it.  You can u
 2. Update __W__ and __H__
 3. Repeat steps #1 and #2 until convergence (or max number of iterations)
 
-#### Implementation
+
 
 With the document matrix (our bags of words), we can begin implementing the NMF algorithm.  
 
