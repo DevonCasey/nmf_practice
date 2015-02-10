@@ -103,15 +103,15 @@ py.sign_in('username', 'api_key')
     # 3D code
     def topic_parse(H, n_topics):
     topics_dicts = []
-
-    for i in xrange(n_topics):
-        # n_top_words of keys and values
-        keys, values = zip(*sorted(zip(feature_words, H[i]), key = lambda x: x[1])[:-n_top_words:-1])
-        val_arr = np.array(values)
-        norms = val_arr / np.sum(val_arr)
-        #normalize = lambda x: int(x / (max(counter.values()) - min(counter.values())) * 90 + 10)
-        topics_dicts.append(dict(zip(keys, np.rint(norms* 300))))
-    return topics_dicts
+    
+        for i in xrange(n_topics):
+            # n_top_words of keys and values
+            keys, values = zip(*sorted(zip(feature_words, H[i]), key = lambda x: x[1])[:-n_top_words:-1])
+            val_arr = np.array(values)
+            norms = val_arr / np.sum(val_arr)
+            #normalize = lambda x: int(x / (max(counter.values()) - min(counter.values())) * 90 + 10)
+            topics_dicts.append(dict(zip(keys, np.rint(norms* 300))))
+        return topics_dicts
     
     small_data = vectorizer.fit_transform(data.content)
     nmf_3 = decomposition.NMF(n_components=3)
