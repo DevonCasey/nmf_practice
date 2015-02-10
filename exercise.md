@@ -16,7 +16,7 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 Make a plotly account following these [instructions] (https://plot.ly/python/getting-started/) and remember your `username` and `api_key`
 
-4. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
+1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
 
 <div>
@@ -25,7 +25,7 @@ Make a plotly account following these [instructions] (https://plot.ly/python/get
 </div>
 
 
-5. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
+2. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
 
 6. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
