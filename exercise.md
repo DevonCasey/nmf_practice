@@ -38,19 +38,21 @@ py.sign_in('username', 'api_key')
     </div>
     
 
-1. To really understand the concept of topic space, try choosing a few topics.  For a small subset of the documents plot it in "topic space" by creating a scatterplot.  X, Y, Z will represent a row of the W weights matrix.
+1. To really understand the concept of topic space, try choosing a few topics.  For a small subset of the documents plot it in "topic space" by creating a scatterplot.  X, Y, Z will represent a row of the W weights matrix. Below fill your code so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Read the `decomposition.NMF` documentation to do a to fit transform on this subset of your data and assign it variable `W`
+    
     ```python 
     data = pd.read_pickle('data/articles.pkl')
-    vect = TfidfVectorizer(max_df=.8, max_features=5000)
-    small_data = vect.fit_transform(data.content)
-    nmf2 = decomposition.NMF(n_components=2)
-    W2 = nmf2.fit_transform(small_data)
+    
+    ''' 
+    Your code here
+    '''
+    
     traces = []
     for section in data['section_name'].unique():
         trace = dict(type='scatter', 
                      mode='markers', 
-                     x=W2[:,0][np.array(data['section_name'] == section)],
-                     y=W2[:,1][np.array(data['section_name'] == section)],
+                     x=W[:,0][np.array(data['section_name'] == section)],
+                     y=W[:,1][np.array(data['section_name'] == section)],
                      text = list(heads[data['section_name'] == section]),
                      opacity = 0.8,
                      showlegend = True,
