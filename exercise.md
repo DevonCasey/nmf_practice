@@ -29,7 +29,7 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 Make a word cloud for each latent topic of the words contained in it.  You can use an online service or [Vega](https://github.com/trifacta/vega/blob/master/examples/spec/wordcloud.json) -- an awesome D3 library -- and it's Python library [Vincent](http://vincent.readthedocs.org/en/latest/index.html) (with sweet IPython [bindings](http://vincent.readthedocs.org/en/latest/quickstart.html#ipython-integration)).   __Hint: Look for the `Word` method in Vincent__
 
 
-### Extra Extra Implementing NMF
+### Implementing NMF
 
 0. Randomly initialize weights and features matrix
 1. Compute difference between __W x H__ and our original matrix using cost function
@@ -40,15 +40,15 @@ Make a word cloud for each latent topic of the words contained in it.  You can u
 
 With the document matrix (our bags of words), we can begin implementing the NMF algorithm.  
 
-1. Create a NMF class to that is initialized with a document matrix (bag of words or tf-idf) __R__.  As arguments (in addition to the document matrix) it should also take parameters __k__ (# of latent topics) and the maximum # of iterations to perform. 
+1. Create a NMF class to that is initialized with a document matrix (bag of words or tf-idf) __V__.  As arguments (in addition to the document matrix) it should also take parameters __k__ (# of latent topics) and the maximum # of iterations to perform. 
   
   First we need to initialize our weights (__W__) and features (__H__) matrices.  
 
 1. Initialize the weights matrix (W) with (positive) random values to be a __n x k__ matrix, where __n__ is the number of documents and __k__ is the number of latent topics.
 
-2.  Initialize the feature matrix (H) to be __k x m__ where __m__ is the number of words in our vocabulary (i.e. length of bag).  Our original document matrix (__R__) is a __n x m__ matrix.  __NOTICE: shape(R) = shape(W * H)__
+2.  Initialize the feature matrix (H) to be __k x m__ where __m__ is the number of words in our vocabulary (i.e. length of bag).  Our original document matrix (__V__) is a __n x m__ matrix.  __NOTICE: shape(V) = shape(W * H)__
 
-3. To make any imporvements we need a concept of error. Define a new function to compute the sum of the squared Euclidean distances between each point in our __R_hat__ matrix (__W__ x __H__) and the original document matrix (__R__).
+3. To make any imporvements we need a concept of error. Define a new function to compute the sum of the squared Euclidean distances between each point in our __V_hat__ matrix (__W__ x __H__) and the original document matrix (__V__).
 
   ![eucl](http://upload.wikimedia.org/math/8/2/0/8206c782235517a0636ff7aa521ed2d7.png)
 
@@ -65,7 +65,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
                     W * H_i+1 * H_i+1.T
     ```
 
-7. Repeat this update until convergence (i.e. __cost(R, W*H)__ == 0). or until our max # of iterations.
+7. Repeat this update until convergence (i.e. __cost(V, W*H)__ == 0). or until our max # of iterations.
 
 8. Return the computed weights matrix and features matrix.
 
