@@ -102,7 +102,7 @@ py.sign_in('username', 'api_key')
     ```python
     # 3D code
     def topic_parse(H, n_topics):
-    topics_dicts = []
+        topics_dicts = []
     
         for i in xrange(n_topics):
             # n_top_words of keys and values
