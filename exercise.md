@@ -55,6 +55,8 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 4. Now that we have initialized our matrices and defined our cost, we can begin iterating. Update your weights and features matrices accordingly.  Update according to the following formulas at each step:
 
     ![multiplicative_update.png](images/multiplicative_update.png)
+    
+    This is one of the popular "multiplicative update" rules from a [paper by Lee and Seung](http://hebb.mit.edu/people/seung/papers/nmfconverge.pdf)
 
 7. Repeat this update until convergence (i.e. __cost(V, W*H)__ == 0). or until our max # of iterations.
 
