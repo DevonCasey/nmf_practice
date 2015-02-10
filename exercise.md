@@ -2,57 +2,32 @@
 
 For this assignment, we will apply the NMF algorithm to our corpus of NYT articles to discover latent topics.  The NYT sections are great, but they are somewhat arbitrarily defined.  Let us see what insights we can mine out of our corpus!  
 
-### NMF for the NYT Articles
 
-```python
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn import decomposition
-import pandas as pd 
-import numpy as np 
-```
+
+### NMF for the NYT Articles
 
 1. We will be starting with our bag of words matrix.  You may use the [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) from scikit-learn (or Tfidf).  You have computed bag of words enough times to know it forwards and backwards.  Use the same 1405 articles we have been using all along now.
 
 2. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/stable/auto_examples/applications/topics_extraction_with_nmf.html) of our documents.  Explore what "topics" are returned. 
 
-3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature. Using your vectorizer, extract the feature names into `feature_words` and then the components `H = nmf.components_`, where `nmf` is [sklearn's Non-Negative Matrix Factorization](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) with 15 topics.
+3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature.
 
-#### Plotting and NMF.
+4. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
-1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
+6. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
 
-1. To really understand the concept of topic space, try choosing a few topics (Politics and Leisure displayed below).  Visualize a small subset of the documents in "topic space" by creating a scatterplot in both two and three dimensions.  Fill your code below so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Set `W2` to be the `fit_transform` of this subset of the content.
-    
-1. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
+5. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
-1.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles' strongest latent features.  Do these make sense given the article?
+6.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features?  Do these make sense given the article?
 
-1. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
+7. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
 
-1. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
+8. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
 
 #### Extra:  Word Cloud
 
-Make a word cloud for each latent topic of the words contained in it.  You can use an online service or [Vega](https://github.com/trifacta/vega/blob/master/examples/spec/wordcloud.json) -- an awesome D3 library -- and it's Python library [Vincent](http://vincent.readthedocs.org/en/latest/index.html) (with sweet IPython [bindings](http://vincent.readthedocs.org/en/latest/quickstart.html#ipython-integration)). 
+Make a word cloud for each latent topic of the words contained in it.  You can use an online service or [Vega](https://github.com/trifacta/vega/blob/master/examples/spec/wordcloud.json) -- an awesome D3 library -- and it's Python library [Vincent](http://vincent.readthedocs.org/en/latest/index.html) (with sweet IPython [bindings](http://vincent.readthedocs.org/en/latest/quickstart.html#ipython-integration)).   __Hint: Look for the `Word` method in Vincent__
 
-In the terminal, 
-
-  ```
-    sudo pip install vincent
-    sudo npm install -g d3
-  ```
-
-Then in a python environment
-
-  ```python
-    
-    import vincent
-    vincent.core.initialize_notebook()
-    for i in xrange(n_topics):
-        word_cloud = vincent.Word(topic_dicts[i])
-        ''' Your code here'''
-        word_cloud.display()
-  ```
 
 ----------
 
@@ -85,21 +60,6 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
     ![multiplicative_update.png](images/multiplicative_update.png)
     
     This is one of the popular "multiplicative update" rules from a [paper by Lee and Seung](http://hebb.mit.edu/people/seung/papers/nmfconverge.pdf).  
-    
-    To code this up, use the following.   Note that we update H first, and then feed our H update into the W update.
-    Notice also that the operations are elementwise (not our usual linear algebra).  
-
-    ```
-                          W.T * R
-    H_i+1 = H_i *  --------------------
-                        W.T * W * H
-
-
-                        R * H_i+1.T
-    W_i+1 = W_i *  --------------------
-                    W * H_i+1 * H_i+1.T
-    ```
-
 
 7. Repeat this update until convergence (i.e. __cost(V, W*H)__ == 0). or until our max # of iterations.
 
