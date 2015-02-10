@@ -52,7 +52,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 
   ![eucl](http://upload.wikimedia.org/math/8/2/0/8206c782235517a0636ff7aa521ed2d7.png)
 
-4. Now that we have initialized our matrices and defined our cost, we can begin iterating. Update your weights and features matrices accordingly.  Update our feature matrix according to the following formula at each step:
+4. Now that we have initialized our matrices and defined our cost, we can begin iterating. Update your weights and features matrices accordingly.  Update according to the following formulas at each step:
 
     ![multiplicative_update.png](images/multiplicative_update.png)
 
