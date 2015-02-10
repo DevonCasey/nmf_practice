@@ -4,7 +4,7 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 
 
-### Latent Factor Model, NMF, for the NYT Articles
+### NMF for the NYT Articles
 
 1. We will be starting with our bag of words matrix.  You may use the [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) from scikit-learn (or Tfidf).  You have computed bag of words enough times to know it forwards and backwards.  Use the same 1405 articles we have been using all along now.
 
