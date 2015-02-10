@@ -97,8 +97,8 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
     
     This is one of the popular "multiplicative update" rules from a [paper by Lee and Seung](http://hebb.mit.edu/people/seung/papers/nmfconverge.pdf).  
     
-    To code this up, use the following.  
-    Notice that we update H first, and then our H update feeds into the update for W.  
+    To code this up, use the following!   Note that we update H first, and then feed our H update into the W update.
+    Notice also that the operations are elementwise (not our usual linear algebra).  
 
     ```
                           W.T * R
