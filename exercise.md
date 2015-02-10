@@ -12,17 +12,28 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature.
 
+#### Interactive Plotting with Plotly.
+
+Make a plotly account following these [instructions] (https://plot.ly/python/getting-started/) and remember your `username` and `api_key`
+
 4. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
-6. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
 
-5. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
+<div>
+    <a href="https://plot.ly/~rickyk9487/2/" target="_blank" title="Word Distributions for Topics of the NYT" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/2.png" alt="Word Distributions for Topics of the NYT" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="rickyk9487:2" src="https://plot.ly/embed.js" async></script>
+</div>
 
-6.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features.  Do these make sense given the article?
 
-7. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
+5. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
 
-8. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
+6. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
+
+7.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features.  Do these make sense given the article?
+
+8. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
+
+9. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
 
 #### Extra:  Word Cloud
 
