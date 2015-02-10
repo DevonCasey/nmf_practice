@@ -58,6 +58,21 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
     ![multiplicative_update.png](images/multiplicative_update.png)
     
     This is one of the popular "multiplicative update" rules from a [paper by Lee and Seung](http://hebb.mit.edu/people/seung/papers/nmfconverge.pdf).  
+    
+
+The following code will be helpful for coding up the above!  Notice that we first update H, then feed that output into the update for W.  Also the operations are element-wise (not your usual linear algebra interpretation).
+
+    ```
+                          W.T * R
+    H_i+1 = H_i *  --------------------
+                        W.T * W * H
+
+
+                        R * H_i+1.T
+    W_i+1 = W_i *  --------------------
+                    W * H_i+1 * H_i+1.T
+    ```
+
 
 7. Repeat this update until convergence (i.e. __cost(V, W*H)__ == 0). or until our max # of iterations.
 
