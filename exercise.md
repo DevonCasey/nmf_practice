@@ -17,8 +17,8 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 Make a plotly account following these [instructions] (https://plot.ly/python/getting-started/) and remember your `username` and `api_key`.
 
 Run the following code in your solution with your own username and api_key
+
     ```python
-    
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn import decomposition
     import pandas as pd 
@@ -26,7 +26,6 @@ Run the following code in your solution with your own username and api_key
     import plotly
     import plotly.plotly as py
     from plotly import graph_objs
-    
     py.sign_in('username', 'api_key')
     ```
 
