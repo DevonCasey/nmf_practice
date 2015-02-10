@@ -10,7 +10,7 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 2. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/stable/auto_examples/applications/topics_extraction_with_nmf.html) of our documents.  Explore what "topics" are returned. 
 
-3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature.
+3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature. Using your vectorizer, extract the feature names into `feature_words` and then the components `H = nmf.components_`, where `nmf` is [this](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) with 15 topics.
 
 #### Interactive Plotting with Plotly.
 
@@ -31,14 +31,35 @@ py.sign_in('username', 'api_key')
 
 1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
+```python
+trace1 = graph_objs.Bar(
+    x=feature_words,
+    y=H[0,:],
+    name='Finance'
+)
+trace2 = graph_objs.Bar(
+    x=feature_words,
+    y=H[1,:],
+    name='Football'
+)
+data_topics = graph_objs.Data([trace1, trace2])
+layout = graph_objs.Layout(
+    title='Word Distributions for Topics of the NYT',
+    barmode='group',
+    xaxis=graph_objs.XAxis(showticklabels=False, title="Words"),
+    yaxis=graph_objs.YAxis(title="Relevance")
+)
+fig = graph_objs.Figure(data=data_topics, layout=layout)
+plot_url = py.plot(fig, filename='nyt_word_distributions', auto_open=False)
+py.iplot(fig, filename='grouped-bar')
+```
 
     <div>
         <a href="https://plot.ly/~rickyk9487/2/" target="_blank" title="Word Distributions for Topics of the NYT" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/2.png" alt="Word Distributions for Topics of the NYT" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
         <script data-plotly="rickyk9487:2" src="https://plot.ly/embed.js" async></script>
     </div>
-    
 
-1. To really understand the concept of topic space, try choosing a few topics.  For a small subset of the documents plot it in "topic space" by creating a scatterplot.  X, Y, Z will represent a row of the W weights matrix. Below fill your code so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Read the `decomposition.NMF` documentation to do a to fit transform on this subset of your data and assign it variable `W2`
+1. To really understand the concept of topic space, try choosing a few topics.  For a small subset of the documents plot it in "topic space" by creating a scatterplot.  X, Y, Z will represent a row of the W weights matrix. Below fill your code so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Set `W2` to be the `fit_transform` of this subset of the content.
     
     ```python 
     data = pd.read_pickle('data/articles.pkl')
@@ -76,8 +97,6 @@ py.sign_in('username', 'api_key')
         <a href="https://plot.ly/~rickyk9487/10/" target="_blank" title="NYT Projected into 2D Topic Space" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/10.png" alt="NYT Projected into 2D Topic Space" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
         <script data-plotly="rickyk9487:10" src="https://plot.ly/embed.js" async></script>
     </div>
-
-
 
 1. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
