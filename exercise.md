@@ -59,9 +59,10 @@ py.sign_in('username', 'api_key')
         <script data-plotly="rickyk9487:2" src="https://plot.ly/embed.js" async></script>
     </div>
 
-1. To really understand the concept of topic space, try choosing a few topics (Politics and Leisure displayed below).  Visualize a small subset of the documents in "topic space" by creating a scatterplot.  Fill your code below so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Set `W2` to be the `fit_transform` of this subset of the content.
+1. To really understand the concept of topic space, try choosing a few topics (Politics and Leisure displayed below).  Visualize a small subset of the documents in "topic space" by creating a scatterplot in both two and three dimensions.  Fill your code below so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Set `W2` to be the `fit_transform` of this subset of the content.
     
     ```python 
+    # 2D code
     data = pd.read_pickle('data/articles.pkl')
     
     ''' 
@@ -97,6 +98,93 @@ py.sign_in('username', 'api_key')
         <a href="https://plot.ly/~rickyk9487/10/" target="_blank" title="NYT Projected into 2D Topic Space" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/10.png" alt="NYT Projected into 2D Topic Space" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
         <script data-plotly="rickyk9487:10" src="https://plot.ly/embed.js" async></script>
     </div>
+
+    ```python
+    # 3D code
+    def topic_parse(H, n_topics):
+    topics_dicts = []
+
+    for i in xrange(n_topics):
+        # n_top_words of keys and values
+        keys, values = zip(*sorted(zip(feature_words, H[i]), key = lambda x: x[1])[:-n_top_words:-1])
+        val_arr = np.array(values)
+        norms = val_arr / np.sum(val_arr)
+        #normalize = lambda x: int(x / (max(counter.values()) - min(counter.values())) * 90 + 10)
+        topics_dicts.append(dict(zip(keys, np.rint(norms* 300))))
+    return topics_dicts
+    
+    small_data = vectorizer.fit_transform(data.content)
+    nmf_3 = decomposition.NMF(n_components=3)
+    W_3 = nmf_3.fit_transform(small_data)
+    H_3 = nmf_3.components_
+    
+    topics_dicts = topic_parse(H_3, 3)
+    
+    traces = []
+    colors = ["#C659CB",
+    "#71C44D",
+    "#C25037",
+    "#9BA9C1",
+    "#454036",
+    "#AE4D76",
+    "#83C9A3",
+    "#D1C046",
+    "#6A62AC",
+    "#AA8D5C"]
+    
+    for i, section in enumerate(data['section_name'].unique()):
+        indeces = np.array(data['section_name'] == section)
+        x = W_3[:,0][indeces] 
+        y = W_3[:,1][indeces] 
+        z = W_3[:,2][indeces] 
+        trace = dict(
+            type='scatter3d',
+            opacity = 0.8,
+            showlegend= True,
+            name= section,
+            x=x,
+            y=y,
+            z=z,
+            mode='markers',
+            marker=dict(
+                color= colors[i],
+                size=10,
+                
+            )
+        )
+        
+        traces.append(trace)
+      
+    layout = dict(
+        title='NYT articles projected into 3D Topic Space'   
+    )
+    
+    fig = dict(data=traces, layout=layout)
+    
+    # labels on axes don't seem to work yet on 3D plots in plotly
+    print "X is International Politics"
+    print "Y is Sports"
+    print "Z is US Government"
+    
+    from IPython.display import HTML
+    
+    # legends as well in plotly
+    matching = zip(colors, data['section_name'].unique())
+    s = "<table style=\"position: relative; bottom: 440px; left: 750px; margin-bottom:-300px\"><td>Color</td><td>Section</td>"
+    
+    for color, name in matching:
+        s += "<tr><td style=\"background: %s\"></td><td>%s</td></tr>" % (color, name)
+    
+    s += "</table>"
+    
+    #plot_url = py.plot(fig, filename='nyt_3d_topic', validate=False, auto_open=False)
+    HTML(py.iplot(fig, validate=False).data + s)
+    ```
+    <div>
+        <a href="https://plot.ly/~rickyk9487/18/" target="_blank" title="NYT articles projected into 3D Topic Space" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/18.png" alt="NYT articles projected into 3D Topic Space" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <script data-plotly="rickyk9487:18" src="https://plot.ly/embed.js" async></script>
+    </div>
+
 
 1. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
