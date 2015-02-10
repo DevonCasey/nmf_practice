@@ -24,7 +24,7 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 8. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
 
-#### Extra
+#### Extra:  Word Cloud
 
 Make a word cloud for each latent topic of the words contained in it.  You can use an online service or [Vega](https://github.com/trifacta/vega/blob/master/examples/spec/wordcloud.json) -- an awesome D3 library -- and it's Python library [Vincent](http://vincent.readthedocs.org/en/latest/index.html) (with sweet IPython [bindings](http://vincent.readthedocs.org/en/latest/quickstart.html#ipython-integration)).   __Hint: Look for the `Word` method in Vincent__
 
@@ -65,7 +65,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 
 8. Return the computed weights matrix and features matrix.
 
-#### Designing an API
+#### Extra:  Design an API
 
 For extra credit try running your NMF on the book review data from yesterday.  In addition try implementing a user friendly API for your class.  These functions should only return results after you have performed your matrix decomposition.
 
