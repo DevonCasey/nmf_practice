@@ -16,11 +16,12 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 Make a plotly account following these [instructions] (https://plot.ly/python/getting-started/) and remember your `username` and `api_key`.
 
-Run the following code 
-```python
-import plotly.plotly as py
-from plotly import graph_objs
-```
+Run the following code in your solution with your own username and api_key
+    ```python
+    import plotly.plotly as py
+    from plotly import graph_objs
+    py.sign_in('username', 'api_key')
+    ```
 
 
 1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
