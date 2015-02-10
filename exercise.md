@@ -18,11 +18,16 @@ Make a plotly account following these [instructions] (https://plot.ly/python/get
 
 Run the following code in your solution with your own username and api_key
     ```python
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn import decomposition
+    import pandas as pd 
+    import numpy as np 
+    import plotly
     import plotly.plotly as py
     from plotly import graph_objs
+    
     py.sign_in('username', 'api_key')
     ```
-
 
 1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
@@ -33,7 +38,44 @@ Run the following code in your solution with your own username and api_key
     </div>
     
 
-1. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
+1. To really understand the concept of topic space, try choosing a few topics.  For a small subset of the documents plot it in "topic space" by creating a scatterplot.  X, Y, Z will represent a row of the W weights matrix.
+    ```python 
+    data = pd.read_pickle('data/articles.pkl')
+    vect = TfidfVectorizer(max_df=.8, max_features=5000)
+    small_data = vect.fit_transform(data.content)
+    nmf2 = decomposition.NMF(n_components=2)
+    W2 = nmf2.fit_transform(small_data)
+    traces = []
+    for section in data['section_name'].unique():
+        trace = dict(type='scatter', 
+                     mode='markers', 
+                     x=W2[:,0][np.array(data['section_name'] == section)],
+                     y=W2[:,1][np.array(data['section_name'] == section)],
+                     text = list(heads[data['section_name'] == section]),
+                     opacity = 0.8,
+                     showlegend = True,
+                     name = section,
+                     )
+    
+        traces.append(trace)
+    
+    x_axis = dict(title='Politics')
+    y_axis = dict(title='Leisure')
+    layout = dict(title='NYT Projected into 2D Topic Space',
+                  xaxis=x_axis,
+                  yaxis=y_axis,
+                  )
+    
+    fig = dict(data=traces, layout=layout)
+    py.iplot(fig, validate=False)
+    ```
+
+    <div>
+        <a href="https://plot.ly/~rickyk9487/10/" target="_blank" title="NYT Projected into 2D Topic Space" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/10.png" alt="NYT Projected into 2D Topic Space" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <script data-plotly="rickyk9487:10" src="https://plot.ly/embed.js" async></script>
+    </div>
+
+
 
 1. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
