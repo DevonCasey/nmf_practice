@@ -94,10 +94,10 @@ py.sign_in('username', 'api_key')
     py.iplot(fig, validate=False)
     ```
 
-    <div>
-        <a href="https://plot.ly/~rickyk9487/10/" target="_blank" title="NYT Projected into 2D Topic Space" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/10.png" alt="NYT Projected into 2D Topic Space" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-        <script data-plotly="rickyk9487:10" src="https://plot.ly/embed.js" async></script>
-    </div>
+<div>
+    <a href="https://plot.ly/~rickyk9487/10/" target="_blank" title="NYT Projected into 2D Topic Space" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/10.png" alt="NYT Projected into 2D Topic Space" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="rickyk9487:10" src="https://plot.ly/embed.js" async></script>
+</div>
 
     ```python
     # 3D code
