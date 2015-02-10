@@ -2,9 +2,14 @@
 
 For this assignment, we will apply the NMF algorithm to our corpus of NYT articles to discover latent topics.  The NYT sections are great, but they are somewhat arbitrarily defined.  Let us see what insights we can mine out of our corpus!  
 
-
-
 ### NMF for the NYT Articles
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn import decomposition
+import pandas as pd 
+import numpy as np 
+```
 
 1. We will be starting with our bag of words matrix.  You may use the [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) from scikit-learn (or Tfidf).  You have computed bag of words enough times to know it forwards and backwards.  Use the same 1405 articles we have been using all along now.
 
@@ -12,14 +17,7 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature. Using your vectorizer, extract the feature names into `feature_words` and then the components `H = nmf.components_`, where `nmf` is [sklearn's Non-Negative Matrix Factorization](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) with 15 topics.
 
-#### Plotting.
-
-    ```python
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn import decomposition
-    import pandas as pd 
-    import numpy as np 
-    ```
+#### Plotting and NMF.
 
 1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
