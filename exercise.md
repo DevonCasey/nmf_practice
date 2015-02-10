@@ -30,10 +30,10 @@ Make a word cloud for each latent topic of the words contained in it.  You can u
 
 In the terminal, 
 
-```python
-  sudo pip install vincent
-  sudo npm install -g d3
-```
+  ```
+    sudo pip install vincent
+    sudo npm install -g d3
+  ```
 
 Then in a python environment
 
