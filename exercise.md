@@ -31,28 +31,28 @@ py.sign_in('username', 'api_key')
 
 1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
-```python
-trace1 = graph_objs.Bar(
-    x=feature_words,
-    y=H[0,:],
-    name='Finance'
-)
-trace2 = graph_objs.Bar(
-    x=feature_words,
-    y=H[1,:],
-    name='Football'
-)
-data_topics = graph_objs.Data([trace1, trace2])
-layout = graph_objs.Layout(
-    title='Word Distributions for Topics of the NYT',
-    barmode='group',
-    xaxis=graph_objs.XAxis(showticklabels=False, title="Words"),
-    yaxis=graph_objs.YAxis(title="Relevance")
-)
-fig = graph_objs.Figure(data=data_topics, layout=layout)
-plot_url = py.plot(fig, filename='nyt_word_distributions', auto_open=False)
-py.iplot(fig, filename='grouped-bar')
-```
+    ```python
+    trace1 = graph_objs.Bar(
+        x=feature_words,
+        y=H[0,:],
+        name='Finance'
+    )
+    trace2 = graph_objs.Bar(
+        x=feature_words,
+        y=H[1,:],
+        name='Football'
+    )
+    data_topics = graph_objs.Data([trace1, trace2])
+    layout = graph_objs.Layout(
+        title='Word Distributions for Topics of the NYT',
+        barmode='group',
+        xaxis=graph_objs.XAxis(showticklabels=False, title="Words"),
+        yaxis=graph_objs.YAxis(title="Relevance")
+    )
+    fig = graph_objs.Figure(data=data_topics, layout=layout)
+    plot_url = py.plot(fig, filename='nyt_word_distributions', auto_open=False)
+    py.iplot(fig, filename='grouped-bar')
+    ```
 
 <div>
     <a href="https://plot.ly/~rickyk9487/2/" target="_blank" title="Word Distributions for Topics of the NYT" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/2.png" alt="Word Distributions for Topics of the NYT" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
