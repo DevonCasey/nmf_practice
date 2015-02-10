@@ -26,21 +26,21 @@ from plotly import graph_objs
 1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
 
-<div>
-    <a href="https://plot.ly/~rickyk9487/2/" target="_blank" title="Word Distributions for Topics of the NYT" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/2.png" alt="Word Distributions for Topics of the NYT" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="rickyk9487:2" src="https://plot.ly/embed.js" async></script>
-</div>
+    <div>
+        <a href="https://plot.ly/~rickyk9487/2/" target="_blank" title="Word Distributions for Topics of the NYT" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/2.png" alt="Word Distributions for Topics of the NYT" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+        <script data-plotly="rickyk9487:2" src="https://plot.ly/embed.js" async></script>
+    </div>
+    
 
+1. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
 
-2. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
+1. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
-6. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
+1.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features.  Do these make sense given the article?
 
-7.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features.  Do these make sense given the article?
+1. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
 
-8. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
-
-9. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
+1. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
 
 #### Extra:  Word Cloud
 
