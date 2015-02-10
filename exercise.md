@@ -48,7 +48,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 
 2.  Initialize the feature matrix (H) to be __k x m__ where __m__ is the number of words in our vocabulary (i.e. length of bag).  Our original document matrix (__V__) is a __n x m__ matrix.  __NOTICE: shape(V) = shape(W * H)__
 
-3. To make any imporvements we need a concept of error. Define a new function to compute the sum of the squared Euclidean distances between each point in our __V_hat__ matrix (__W__ x __H__) and the original document matrix (__V__).
+3. To make any improvements we need a concept of error. Define a new function to compute the sum of the squared Euclidean distances between each point in our __V_hat__ matrix (__W__ x __H__) and the original document matrix (__V__).
 
   ![eucl](http://upload.wikimedia.org/math/8/2/0/8206c782235517a0636ff7aa521ed2d7.png)
 
