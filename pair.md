@@ -8,22 +8,23 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 1. We will be starting with our bag of words matrix.  You may use the [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) from scikit-learn (or Tfidf).  You have computed bag of words enough times to know it forwards and backwards.  Use the same 1405 articles we have been using all along now.
 
-2. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/stable/auto_examples/applications/topics_extraction_with_nmf.html) of our documents.  Explore what "topics" are returned. 
+1. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/stable/auto_examples/applications/topics_extraction_with_nmf.html) of our documents.  Explore what "topics" are returned. 
 
-3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature.
+1. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature.
 
-5. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
+1. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
-6.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features?  Do these make sense given the article?
+1.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features?  Do these make sense given the article?
 
-7. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
+1. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
 
-8. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
+1. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
 
-4. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
+Optional plots:
 
-6. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
+1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
+1. To really understand the concept of topic space, try choosing 3 topics.  For a small subset of the documents plot it in "topic space" by creating a 3d scatterplot.  X, Y, Z will represent a row of the W weights matrix.
 
 #### Extra:  Word Cloud
 
