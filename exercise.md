@@ -18,16 +18,16 @@ Make a plotly account following these [instructions] (https://plot.ly/python/get
 
 Run the following code in your solution with your own username and api_key
 
-    ```python
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn import decomposition
-    import pandas as pd 
-    import numpy as np 
-    import plotly
-    import plotly.plotly as py
-    from plotly import graph_objs
-    py.sign_in('username', 'api_key')
-    ```
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn import decomposition
+import pandas as pd 
+import numpy as np 
+import plotly
+import plotly.plotly as py
+from plotly import graph_objs
+py.sign_in('username', 'api_key')
+```
 
 1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
