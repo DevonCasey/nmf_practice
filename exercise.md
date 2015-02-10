@@ -12,47 +12,16 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature. Using your vectorizer, extract the feature names into `feature_words` and then the components `H = nmf.components_`, where `nmf` is [sklearn's Non-Negative Matrix Factorization](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) with 15 topics.
 
-#### Interactive Plotting with Plotly.
-
-Make a plotly account following these [instructions] (https://plot.ly/python/getting-started/) and remember your `username` and `api_key`.
-
-Run the following code in your solution with your own username and api_key
+#### Plotting.
 
     ```python
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn import decomposition
     import pandas as pd 
     import numpy as np 
-    import plotly
-    import plotly.plotly as py
-    from plotly import graph_objs
-    py.sign_in('username', 'api_key')
     ```
 
 1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
-
-    ```python
-    trace1 = graph_objs.Bar(
-        x=feature_words,
-        y=H[0,:],
-        name='Finance'
-    )
-    trace2 = graph_objs.Bar(
-        x=feature_words,
-        y=H[1,:],
-        name='Football'
-    )
-    data_topics = graph_objs.Data([trace1, trace2])
-    layout = graph_objs.Layout(
-        title='Word Distributions for Topics of the NYT',
-        barmode='group',
-        xaxis=graph_objs.XAxis(showticklabels=False, title="Words"),
-        yaxis=graph_objs.YAxis(title="Relevance")
-    )
-    fig = graph_objs.Figure(data=data_topics, layout=layout)
-    plot_url = py.plot(fig, filename='nyt_word_distributions', auto_open=False)
-    py.iplot(fig, filename='grouped-bar')
-    ```
 
     <div>
         <a href="https://plot.ly/~rickyk9487/2/" target="_blank" title="Word Distributions for Topics of the NYT" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/2.png" alt="Word Distributions for Topics of the NYT" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
@@ -61,44 +30,6 @@ Run the following code in your solution with your own username and api_key
 
 1. To really understand the concept of topic space, try choosing a few topics (Politics and Leisure displayed below).  Visualize a small subset of the documents in "topic space" by creating a scatterplot in both two and three dimensions.  Fill your code below so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Set `W2` to be the `fit_transform` of this subset of the content.
     
-    ```python 
-    # 2D code
-    data = pd.read_pickle('data/articles.pkl')
-    
-    ''' 
-    Your code here
-    '''
-    
-    traces = []
-    for section in data['section_name'].unique():
-        trace = dict(type='scatter', 
-                     mode='markers', 
-                     x=W2[:,0][np.array(data['section_name'] == section)],
-                     y=W2[:,1][np.array(data['section_name'] == section)],
-                     text = list(heads[data['section_name'] == section]),
-                     opacity = 0.8,
-                     showlegend = True,
-                     name = section,
-                     )
-    
-        traces.append(trace)
-    
-    x_axis = dict(title='Politics')
-    y_axis = dict(title='Leisure')
-    layout = dict(title='NYT Projected into 2D Topic Space',
-                  xaxis=x_axis,
-                  yaxis=y_axis,
-                  )
-    
-    fig = dict(data=traces, layout=layout)
-    py.iplot(fig, validate=False)
-    ```
-
-<div>
-    <a href="https://plot.ly/~rickyk9487/10/" target="_blank" title="NYT Projected into 2D Topic Space" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/10.png" alt="NYT Projected into 2D Topic Space" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="rickyk9487:10" src="https://plot.ly/embed.js" async></script>
-</div>
-
 1. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
 1.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles' strongest latent features.  Do these make sense given the article?
