@@ -29,6 +29,9 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 Make a word cloud for each latent topic of the words contained in it.  You can use an online service or [Vega](https://github.com/trifacta/vega/blob/master/examples/spec/wordcloud.json) -- an awesome D3 library -- and it's Python library [Vincent](http://vincent.readthedocs.org/en/latest/index.html) (with sweet IPython [bindings](http://vincent.readthedocs.org/en/latest/quickstart.html#ipython-integration)).   __Hint: Look for the `Word` method in Vincent__
 
 
+----------
+
+
 ### Implementing NMF
 
 0. Randomly initialize weights and features matrix
