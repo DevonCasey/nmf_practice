@@ -56,7 +56,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 
     ![multiplicative_update.png](images/multiplicative_update.png)
     
-    This is one of the popular "multiplicative update" rules from a [paper by Lee and Seung](http://hebb.mit.edu/people/seung/papers/nmfconverge.pdf)
+    This is one of the popular "multiplicative update" rules from a [paper by Lee and Seung](http://hebb.mit.edu/people/seung/papers/nmfconverge.pdf).  
 
 7. Repeat this update until convergence (i.e. __cost(V, W*H)__ == 0). or until our max # of iterations.
 
