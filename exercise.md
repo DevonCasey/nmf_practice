@@ -10,7 +10,7 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 2. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/stable/auto_examples/applications/topics_extraction_with_nmf.html) of our documents.  Explore what "topics" are returned. 
 
-3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature. Using your vectorizer, extract the feature names into `feature_words` and then the components `H = nmf.components_`, where `nmf` is [this](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) with 15 topics.
+3. The output may be hard to understand, but I recommend looking at the top features for each article and also the top words for each feature. Using your vectorizer, extract the feature names into `feature_words` and then the components `H = nmf.components_`, where `nmf` is [sklearn's Non-Negative Matrix Factorization](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) with 15 topics.
 
 #### Interactive Plotting with Plotly.
 
@@ -100,7 +100,7 @@ py.iplot(fig, filename='grouped-bar')
 
 1. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
-1.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features.  Do these make sense given the article?
+1.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles' strongest latent features.  Do these make sense given the article?
 
 1. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
 
