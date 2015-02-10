@@ -21,11 +21,6 @@ import numpy as np
 
 1. Make a bar plot of the (top) words for each topic.  The x-axis should represent the word, and the y-axis should represent the value of each word in the topic.  This is similar to looking at the centroids from our kmeans clusters.
 
-    <div>
-        <a href="https://plot.ly/~rickyk9487/2/" target="_blank" title="Word Distributions for Topics of the NYT" style="display: block; text-align: center;"><img src="https://plot.ly/~rickyk9487/2.png" alt="Word Distributions for Topics of the NYT" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-        <script data-plotly="rickyk9487:2" src="https://plot.ly/embed.js" async></script>
-    </div>
-
 1. To really understand the concept of topic space, try choosing a few topics (Politics and Leisure displayed below).  Visualize a small subset of the documents in "topic space" by creating a scatterplot in both two and three dimensions.  Fill your code below so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Set `W2` to be the `fit_transform` of this subset of the content.
     
 1. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
