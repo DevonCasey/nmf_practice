@@ -18,7 +18,7 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 5. Can you add a title to each latent topic representing the words it contains?  Do these make sense given the articles with each topic?
 
-6.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features?  Do these make sense given the article?
+6.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features.  Do these make sense given the article?
 
 7. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
 
@@ -28,6 +28,24 @@ For this assignment, we will apply the NMF algorithm to our corpus of NYT articl
 
 Make a word cloud for each latent topic of the words contained in it.  You can use an online service or [Vega](https://github.com/trifacta/vega/blob/master/examples/spec/wordcloud.json) -- an awesome D3 library -- and it's Python library [Vincent](http://vincent.readthedocs.org/en/latest/index.html) (with sweet IPython [bindings](http://vincent.readthedocs.org/en/latest/quickstart.html#ipython-integration)).   __Hint: Look for the `Word` method in Vincent__
 
+In the terminal, 
+
+```python
+  sudo pip install vincent
+  sudo npm install -g d3
+```
+
+Then in a python environment
+
+  ```python
+    
+    import vincent
+    vincent.core.initialize_notebook()
+    for i in xraneg(n_topics):
+        word_cloud = vincent.Word(topic_dicts[i])
+        ''' Your code here'''
+        word_cloud.display()
+  ```
 
 ----------
 
