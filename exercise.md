@@ -59,7 +59,7 @@ py.sign_in('username', 'api_key')
         <script data-plotly="rickyk9487:2" src="https://plot.ly/embed.js" async></script>
     </div>
 
-1. To really understand the concept of topic space, try choosing a few topics.  For a small subset of the documents plot it in "topic space" by creating a scatterplot.  X, Y, Z will represent a row of the W weights matrix. Below fill your code so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Set `W2` to be the `fit_transform` of this subset of the content.
+1. To really understand the concept of topic space, try choosing a few topics (Politics and Leisure displayed below).  Visualize a small subset of the documents in "topic space" by creating a scatterplot.  Fill your code below so that you use a TfidfVectorizer with arguments `max_df=.8` and `max_features=5000` to do a fit transform on the `content` column of the data. Set `W2` to be the `fit_transform` of this subset of the content.
     
     ```python 
     data = pd.read_pickle('data/articles.pkl')
