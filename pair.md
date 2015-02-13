@@ -1,6 +1,6 @@
 ## NYT articles 
 
-For this assignment, we will apply the NMF algorithm to our corpus of NYT articles to discover latent topics.  The NYT sections are great, but they are somewhat arbitrarily defined.  Let us see what insights we can mine out of our corpus!  We will be starting with our bag of words matrix.  
+For this assignment, we will apply the NMF algorithm to our corpus of NYT articles to discover latent topics.  The NYT sections (topics) are great, but they are somewhat arbitrarily defined.  Let us see what insights we can mine out of our corpus!  We will be starting with our bag of words matrix.  Use the same 1405 articles we have been using all along now.
 
 
 
@@ -55,8 +55,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 
 ### Built-In NMF
 
-1. You may use the [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) from scikit-learn (or Tfidf).  You have computed bag of words enough times to know it forwards and backwards.  Use the same 1405 articles we have been using all along now.
-
+1. You may use the [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) from scikit-learn (or Tfidf).  
 
 1. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/stable/auto_examples/applications/topics_extraction_with_nmf.html) of our documents.  Explore what "topics" are returned. 
 
