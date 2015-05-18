@@ -48,7 +48,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
       ```
 
 
-7. Repeat this update until convergence (i.e. __cost(V, W*H)__ == 0). or until our max # of iterations.
+7. Repeat this update until convergence (i.e. change in __cost(V, W*H)__ close to 0). or until our max # of iterations.
 
 8. Return the computed weights matrix and features matrix.
 
