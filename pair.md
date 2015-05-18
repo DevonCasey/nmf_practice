@@ -37,14 +37,14 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
   The following code will be helpful for coding up the above!  Notice that we first update H, then feed that output into the      update for W. 
   
       ```
-                            W.T * R
-      H_i+1 = H_i *  --------------------
+                            W.T * V
+      H_(i+1) = H_i *  --------------------
                           W.T * W * H
   
   
-                          R * H_i+1.T
-      W_i+1 = W_i *  --------------------
-                      W * H_i+1 * H_i+1.T
+                          V * H_(i+1).T
+      W_(i+1) = W_i *  --------------------
+                      W * H_(i+1) * H_(i+1).T
       ```
 
 
