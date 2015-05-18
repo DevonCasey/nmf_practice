@@ -65,7 +65,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 
 1.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features?  Do these make sense given the article?
 
-1. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 4).
+1. Compare these results to what your results from kmeans / Hierarchical clustering (Week 5 Day 3).
 
 1. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
 
@@ -79,7 +79,7 @@ Optional plots:
 
 #### Extra:  Design an API
 
-For extra credit try running your NMF on the book review data from yesterday.  In addition try implementing a user friendly API for your class.  These functions should only return results after you have performed your matrix decomposition.
+For extra credit try running your NMF on the book review data from last week.  In addition try implementing a user friendly API for your class.  These functions should only return results after you have performed your matrix decomposition.
 
 1. Define a function that displays the top ten words for each of your __k__ topics (and the associated weights).
 2. Define a function that displays the headlines/titles of the top 10 documents for each topic.
