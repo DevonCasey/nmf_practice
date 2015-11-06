@@ -42,7 +42,7 @@ To start, we will update __H__ by calling lstsq, holding __W__ fixed and minimiz
 ### Built-In NMF
 
 
-1. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/stable/auto_examples/applications/topics_extraction_with_nmf.html) of our documents.  Explore what "topics" are returned. 
+1. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/dev/auto_examples/applications/topics_extraction_with_nmf_lda.html) of our documents.  Explore what "topics" are returned. 
 
 2. Run the code you wrote for the __Using Your NMF Function__ on the SKlearn classifier.  How close is the output to what you found writing your own NMF classifier?
 
