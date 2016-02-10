@@ -26,7 +26,7 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 3. Assume we want to use a least-squares error metric when we update the matrices __W__ and __H__. This allows us to use the numpy.linalg.lstsq solver. 
 To start, we will update __H__ by calling lstsq, holding __W__ fixed and minimizing the sum of squared errors predicting the document matrix. Since these values should all be at least 0, clip all the values in __H__ after the call to lstsq.
 
-4. Use the lstsq solver to update __W__ while holding __H__ fixed. The lstsq solver assumes it is optimizing the right matrix of the multiplication (e.g. x in the equation __ax=b__). So you will need to get creative so you can use it and have the dimensions line up correctly.  Brainstorm on paper or a whiteboard how to manipulate the matrices so lstsq can get the dimensionality correct and optimize __W__. __hint: it involves transposes.__ Clip __W__ appropriately after updating it with lstsq to ensure it is at least 0.
+4. Use the lstsq solver to update __W__ while holding __H__ fixed. The lstsq solver assumes it is optimizing the right matrix of the multiplication (e.g. x in the equation __ax=b__). So you will need to get creative so you can use it and have the dimensions line up correctly.  Brainstorm on paper or a whiteboard how to manipulate the matrices so that lstsq can get the dimensionality correct and optimize __W__. __hint: it involves transposes.__ Clip __W__ appropriately after updating it with lstsq to ensure it is at least 0.
 
 5. Repeat steps 3 and 4 for a fixed number of iterations, or until convergence (i.e. change in __cost(V, W*H)__ close to 0).
 
@@ -44,13 +44,13 @@ To start, we will update __H__ by calling lstsq, holding __W__ fixed and minimiz
 
 1. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/dev/auto_examples/applications/topics_extraction_with_nmf_lda.html) of our documents.  Explore what "topics" are returned. 
 
-2. Run the code you wrote for the __Using Your NMF Function__ on the SKlearn classifier.  How close is the output to what you found writing your own NMF classifier?
+2. Run the code you wrote for the __Using Your NMF Function__ section on the SKlearn classifier.  How close is the output to what you found using your own NMF classifier?
 
 3. Can you add a title to each latent topic representing the words it contains?
 
-4.  Now that you have hopefully labeled the latent features with what topics they represent, explore a few articles strongest latent features.  Do these make sense given the article? You will have to go back to the raw data you read in to do this.
+4.  Now that you have labeled the latent features with what topics they represent, explore strongest latent features for a few articles.  Do these make sense given the article? You will have to go back to the raw data you read in to do this.
 
-5. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  And why do you think these exist?
+5. How do the NYT sections compare to the topics from the unsupervised learning?  What are the differences?  Why do you think these differences exist?
 
 
 
