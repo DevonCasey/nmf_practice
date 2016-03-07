@@ -15,7 +15,7 @@ For this assignment, we will apply the NMF algorithm to a corpus of NYT articles
 ### Implementing your own NMF
 With the document matrix (our bags of words), we can begin implementing the NMF algorithm.  
 
-1. Create a NMF class to that is initialized with a document matrix (bag of words or tf-idf) __V__.  As arguments (in addition to the document matrix) it should also take parameters __k__ (# of latent topics) and the maximum # of iterations to perform. 
+1. Create a NMF class that is initialized with a document matrix (bag of words or tf-idf) __V__.  As arguments (in addition to the document matrix) it should also take parameters __k__ (# of latent topics) and the maximum # of iterations to perform. 
   
   First we need to initialize our weights (__W__) and features (__H__) matrices.  
 
