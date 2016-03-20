@@ -21,16 +21,16 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 
 2. Initialize the weights matrix (__W__) with positive random values to be a __n x k__ matrix, where __n__ is the number of documents and __k__ is the number of latent topics.
 
-2.  Initialize the feature matrix (__H__) to be __k x m__ where __m__ is the number of words in our vocabulary (i.e. length of bag).  Our original document matrix (__V__) is a __n x m__ matrix.  __NOTICE: shape(V) = shape(W * H)__
+3.  Initialize the feature matrix (__H__) to be __k x m__ where __m__ is the number of words in our vocabulary (i.e. length of bag).  Our original document matrix (__V__) is a __n x m__ matrix.  __NOTICE: shape(V) = shape(W * H)__
 
-3. Next implement your class's `fit()` method. Use a least-squares error metric when we update the matrices __W__ and __H__. This allows us to use the `numpy.linalg.lstsq` solver.
+4. Next implement your class's `fit()` method. Use a least-squares error metric when we update the matrices __W__ and __H__. This allows us to use the `numpy.linalg.lstsq` solver.
 To start, we will update __H__ by calling `lstsq`, holding __W__ fixed and minimizing the sum of squared errors predicting the document matrix. Since these values should all be at least 0, clip all the values in __H__ after the call to `lstsq`.
 
-4. Use the `lstsq` solver to update __W__ while holding __H__ fixed. The `lstsq` solver assumes it is optimizing the right matrix of the multiplication (e.g. x in the equation __Ax=b__). So you will need to get creative so you can use it and have the dimensions line up correctly.  Brainstorm on paper or a whiteboard how to manipulate the matrices so that `lstsq` can get the dimensionality correct and optimize __W__. __hint: it involves transposes.__ Clip __W__ appropriately after updating it with `lstsq` to ensure it is at least 0.
+5. Use the `lstsq` solver to update __W__ while holding __H__ fixed. The `lstsq` solver assumes it is optimizing the right matrix of the multiplication (e.g. x in the equation __Ax=b__). So you will need to get creative so you can use it and have the dimensions line up correctly.  Brainstorm on paper or a whiteboard how to manipulate the matrices so that `lstsq` can get the dimensionality correct and optimize __W__. __hint: it involves transposes.__ Clip __W__ appropriately after updating it with `lstsq` to ensure it is at least 0.
 
-5. Inside your class's `fit()` method, repeat steps 3 and 4 for a fixed number of iterations, or until convergence (i.e. __cost(V, W*H)__ is close to 0).
+6. Inside your class's `fit()` method, repeat steps 4 and 5 for a fixed number of iterations, or until convergence (i.e. __cost(V, W*H)__ is close to 0).
 
-6. Return the computed weights matrix and features matrix.
+7. Return the computed weights matrix and features matrix.
 
 ### Using Your NMF Function
 
