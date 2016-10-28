@@ -28,7 +28,7 @@ We will now implement the NMF algorithm so that we can later use it to mine the 
 
   2. Instantiate __H__ (the feature matrix) having shape __k x m__ and filling it with positive random values.
 
-  3. Our cost function will be RSS of the reconstruction of __V__, more precisely: <img src="images/cost_function.png" width=100> (see [Matrix norms](https://en.wikipedia.org/wiki/Matrix_norm)) That means we can us numpy's least squares solver to fit __W__ and __H__; import numpy's least squares solver at the top of your module with the line `from numpy.linalg import lstsq`.
+  3. Our cost function will be the L2-norm of the reconstruction error of __V__, more precisely: <img src="images/cost_function.png" width=100> (see [Matrix norms](https://en.wikipedia.org/wiki/Matrix_norm)). That means we can us numpy's least squares solver to fit __W__ and __H__; import numpy's least squares solver at the top of your module with the line `from numpy.linalg import lstsq`.
 
   4. Update __H__ by calling `lstsq`, holding __W__ fixed. After the call to `lstsq`, clip all the values in __H__ to be non-negative (i.e. set all the negative values of __H__ to zero).
 
@@ -40,7 +40,7 @@ We will now implement the NMF algorithm so that we can later use it to mine the 
 
   8. Don't forget to write a docstring for your `fit` method.
 
-4. Declare and implement a method that returns the RSS of the reconstruction: <img src="images/cost_function.png" width=100>. We'll use this method later to see how the RSS is affected by modifying various inputs.
+4. Declare and implement a method that returns the L2-norm of the reconstruction error of __V__: <img src="images/cost_function.png" width=100>.
 
 ### Using Your NMF Function
 
@@ -57,11 +57,11 @@ W, H = factorizer.fit(X)
 
 ### Built-In NMF
 
-1. Use [sklearn's NMF implementation](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/dev/auto_examples/applications/topics_extraction_with_nmf_lda.html) of our documents.  Explore what "topics" are returned.
+1. Use [sklearn's NMF implementation](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html) to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/dev/auto_examples/applications/topics_extraction_with_nmf_lda.html) of our documents.  Again, label the "topics" that NMF finds.
 
 2. How close are the topics to what you found using your own NMF implementation?
 
-3. Can you add a title to each latent topic representing the words it contains?
+3. How close is the reconstruction error between your implementation and sklearn's?
 
 4.  Now that you have labeled the latent features with what topics they represent, explore strongest latent features for a few articles.  Do these make sense given the article? You will have to go back to the raw data you read in to do this.
 
