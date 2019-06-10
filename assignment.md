@@ -1,6 +1,6 @@
 ## NYT articles
 
-For this assignment, we will apply the NMF algorithm to a corpus of NYT articles to discover latent topics.  The NYT sections (topics) are great, but we don't know how they relate to patterns in article content.  Let us see what insights we can mine out of our corpus!  We will be starting with our bag of words matrix.  Use the same 1405 articles we have been using all along now.
+For this assignment, we will apply the NMF algorithm to a corpus of NYT articles to discover latent topics.  The NYT sections (topics) are great, but we don't know how they relate to patterns in article content.  Let us see what insights we can mine out of our corpus!  We will be starting with our bag of words matrix. 
 
 ### Preliminaries
 
@@ -8,6 +8,7 @@ For this assignment, we will apply the NMF algorithm to a corpus of NYT articles
 
 
 2. Use the [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) from scikit-learn (or Tfidf) to turn the content of the news stories into a document-term matrix.  Choose a reasonable value (like 5000) for max_features when initializing the vectorizer.
+    - Note that these vectorizers return the document-term matrix in a special [sparse matrix data type](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html). If you need to cast to a numpy array, use the [`.toarray()`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.toarray.html#scipy.sparse.csr_matrix.toarray) method
 
 
 3. Use the get_feature_names method of your vectorizer to store the word represented by each column of your document-term matrix.
@@ -23,12 +24,14 @@ With the document matrix (our bags of words), we can begin implementing the NMF 
 
 3.  Initialize the feature matrix (__H__) to be __k x m__ where __m__ is the number of words in our vocabulary (i.e. length of bag).  Our original document matrix (__V__) is a __n x m__ matrix.  __NOTICE: shape(V) = shape(W * H)__
 
-4. Next implement your class's `fit()` method. Use a least-squares error metric when we update the matrices __W__ and __H__. This allows us to use the `numpy.linalg.lstsq` solver.
+4. Next implement your class's `fit()` method. Use a least-squares error metric when we update the matrices __W__ and __H__. This allows us to use the [`numpy.linalg.lstsq`](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.linalg.lstsq.html) solver.
 To start, we will update __H__ by calling `lstsq`, holding __W__ fixed and minimizing the sum of squared errors predicting the document matrix. Since these values should all be at least 0, clip all the values in __H__ after the call to `lstsq`.
 
-5. Use the `lstsq` solver to update __W__ while holding __H__ fixed. The `lstsq` solver assumes it is optimizing the right matrix of the multiplication (e.g. x in the equation __Ax=b__). So you will need to get creative so you can use it and have the dimensions line up correctly.  Brainstorm on paper or a whiteboard how to manipulate the matrices so that `lstsq` can get the dimensionality correct and optimize __W__. __hint: it involves transposes.__ Clip __W__ appropriately after updating it with `lstsq` to ensure it is at least 0.
+5. Use the `lstsq` solver to update __W__ while holding __H__ fixed. The `lstsq` solver assumes it is optimizing the right matrix of the multiplication (e.g. x in the equation __Ax=b__). So you will need to get creative so you can use it and have the dimensions line up correctly.  Brainstorm on paper or a whiteboard how to manipulate the matrices so that `lstsq` can get the dimensionality correct and optimize __W__. 
+    - __hint: remember this property about [matrix transposes](https://en.wikipedia.org/wiki/Matrix_multiplication#Transpose) `(PQ).T = (Q.T)(P.T)`__ where `.T` represents the transpose operation.
+    - Clip __W__ appropriately after updating it with `lstsq` to ensure it is at least 0.
 
-6. Inside your class's `fit()` method, repeat steps 4 and 5 for a fixed number of iterations, or until convergence (i.e. __cost(V, W*H)__ is close to 0).
+6. Inside your class's `fit()` method, repeat steps 4 and 5 for a fixed number of iterations, or until convergence (i.e. change in **cost(V, W*H)** is close to 0).
 
 7. Return the computed weights matrix and features matrix.
 
@@ -42,7 +45,7 @@ To start, we will update __H__ by calling `lstsq`, holding __W__ fixed and minim
 ### Built-In NMF
 
 
-1. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/dev/auto_examples/applications/topics_extraction_with_nmf_lda.html) of our documents.  Explore what "topics" are returned.
+1. Use the scikit-learn NMF algorithm to compute the [Non-Negative Matrix factorization](http://scikit-learn.org/0.18/auto_examples/applications/topics_extraction_with_nmf_lda.html) of our documents.  Explore what "topics" are returned.
 
 2. Run the code you wrote for the __Using Your NMF Function__ section on the SKlearn classifier.  How close is the output to what you found using your own NMF classifier?
 
