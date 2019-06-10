@@ -12,4 +12,3 @@ This sprint will use Non-Negative Matrix factorization (NMF) to discover topics 
 * Latent properties
 * Linear combination of features
 
-Exercise in [pair.md](pair.md).
