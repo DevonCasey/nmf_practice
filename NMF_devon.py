@@ -4,13 +4,12 @@ import numpy as np
 import pandas as pd
 from numpy.linalg import lstsq
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import mean_squared_error
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 class NMF(object):
-    def __init__(self, V, latent_topics, max_iter=20, error=0.01):
+    def __init__(self, V, latent_topics, max_iter=50, error=0.01):
         """
         Initialize our weights (W) and features (H) matrices
         Initialize the weights matrix (W) with (positive) random values to be a n x k matrix, where n is the number of documents and k is the number of latent topics
@@ -32,7 +31,7 @@ class NMF(object):
 
     def update_W(self):
             """
-            Use the same lstsq solver to update W while holding H fixed
+            Use the same lstsq solver to update W while holding H fixed (T means two)
             """
             W_T = lstsq(self.H.T, self.V.T)[0]
             self.W = W_T.T
@@ -40,11 +39,11 @@ class NMF(object):
 
     def fit(self):
             """
-            Repeat update_H and update_W for max_iter iterations, or until convergence (change in cost(V, W*H) close to 0)
+            Repeat update_H and update_W for max_iter iterations, or until convergence (change in cost(V, W*H) ≈ 0)
             """
             for i in range(self.max_iter):
                 if self.cost() > self.error:
-                    print("Iteration %d | Current cost: %f" % (i, self.cost()))
+                    print("Iteration %d | Current Cost: %f" % (i + 1, self.cost()))
                     self.update_H()
                     self.update_W()
                 else:
@@ -60,37 +59,39 @@ class NMF(object):
         keys = np.argsort(self.H)
         return keys
 
-    def load_data(file="data/articles.pkl", X_col='content', y_col='section_name'):
-        """
-        Load, tokenize and vectorize data
-        """
-        df = pd.read_pickle(file)
-        X = df[X_col]
-        y = df[y_col]
-        vect = CountVectorizer(max_features=5000, stop_words='english')
-        tok = vect.fit_transform(X)
-        return df, X, y, tok, vect
+def load_data(file="data/articles.pkl", X_col='content', y_col='section_name'):
+    """
+    Load, tokenize and vectorize data
+    """
+    df = pd.read_pickle(file)
+    X = df[X_col]
+    y = df[y_col]
+    vect = CountVectorizer(max_features=5000, stop_words='english')
+    tok = vect.fit_transform(X)
+    return df, X, y, tok, vect
 
 def main():
     """
-    Test function
+    Makes it work
     """
+    print()
     print("Loading data and initilizing...")
-    df, X, y, tok, vect = NMF.load_data()
+    df, X, y, tok, vect = load_data()
     feature_name = np.array(vect.get_feature_names())
     section_names = df['section_name'].unique()
     print("Running NMF...")
+    print("----------------------------------------------------------------")
+    print()
     nmf = NMF(tok.todense(), len(section_names))
     nmf.fit()
-    print("Getting top topics...")
+    print("----------------------------------------------------------------")
+    print("Total cost of model: %f" % (nmf.cost()))
+    print()
     top_features = feature_name[np.argsort(nmf.H)]
     top_five_features = top_features[:, :-6:-1]
-    print("Top five features (Sorted by Topics from 0-10:")
+    print("Top five features (Sorted by Topics from 0-10):")
     print(top_five_features)
-    tfdif = TfidfVectorizer(max_features=5000, stop_words='english')
-    sk_tok = tfdif.fit_transform(X)
-    print("Total cost of model: %f" % (nmf.cost()))
-    print("List of keys: "), (nmf.key_feat_idx())
+    print()
 
 if __name__ == "__main__":
     main()
